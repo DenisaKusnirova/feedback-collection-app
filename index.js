@@ -7,20 +7,23 @@ const passport = require("passport");
 require("./models/User");
 require("./services/passport");
 
-const app = express();
-authRoutes(app);
+// Connect mongoose to mongodb
+mongoose.connect(keys.mongoURI);
 
-app.use(cookieSession({
-  maxAge: 30 * 23 * 60 * 60 * 1000,
-  keys: [keys.cookieKey],
-}));
+const app = express();
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
 
 // Tell passport to use cookies to manage authentication:
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect mongoose to mongodb
-mongoose.connect(keys.mongoURI);
+authRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
