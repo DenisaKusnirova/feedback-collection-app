@@ -24,20 +24,18 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
-      proxy: true,
+      proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // mongoose query return a promise:
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          // done is a callback, we need to call after we're done with some operation, null arg - no error - all went fine (or an error object can be passed here)
-          done(null, existingUser);
-        } else {
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        // done is a callback, we need to call after we're done with some operation, null arg - no error - all went fine (or an error object can be passed here)
+        done(null, existingUser);
+        return;
+      }
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
