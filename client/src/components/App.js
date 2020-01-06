@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../actions";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -13,6 +15,11 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
 
   return (
     <div>
