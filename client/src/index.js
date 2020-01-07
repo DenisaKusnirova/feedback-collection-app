@@ -11,7 +11,7 @@ import reduxThunk from "redux-thunk";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#1976d2",
+      main: "#dc6263",
       color: "white"
     },
     secondary: {

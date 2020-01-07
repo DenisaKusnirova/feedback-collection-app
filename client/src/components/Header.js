@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +21,12 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
     marginRight: theme.spacing(2)
-  }
+  },
+  link: {
+    fontSize: 32,
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+  },
 }));
 
 function Header() {
@@ -51,8 +56,8 @@ function Header() {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Link component="button" variant="h5" href="/">
-          Feedback Collection App
+        <Link to={user? "/surveys" : "/"} className={classes.link}>
+          Emaily
         </Link>
         {renderContent()}
       </AppBar>

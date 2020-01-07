@@ -4,12 +4,14 @@ import Header from "./Header";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../actions";
+import Landing from "./Landing";
 
 const useStyles = makeStyles(() => ({
   container: {
     maxWidth: 800,
     margin: "0 auto",
-    padding: "40px 16px"
+    padding: "40px 16px",
+    backgroundColor: "#f3f3f3"
   }
 }));
 
@@ -21,13 +23,16 @@ const App = () => {
     dispatch(fetchUser());
   }, []);
 
+  const Surveys = () => <h3>Surveys</h3>;
+
   return (
-    <div>
+    <BrowserRouter>
       <Header />
       <div className={classes.container}>
-        <BrowserRouter />
+        <Route path="/" component={Landing} exact />
+        <Route path="/surveys" component={Surveys} />
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 
