@@ -9,7 +9,13 @@ module.exports = app => {
   );
 
   // get the user profile:
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  );
 
   app.get("/api/logout", (req, res) => {
     // Passport automatically attach logout function to req, when it's called, it takes a cookie and kills an id in it
