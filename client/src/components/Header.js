@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   logoutMenu: {
     display: "flex",
     flexDirection: "row",
-    '& > button:first-child': {
+    '& > span:first-child': {
       marginRight: 16,
     }
   }
@@ -55,7 +55,7 @@ function Header() {
         return (
           <div className={classes.logoutMenu}>
             <Payments />
-            <Button variant="contained" color="primary" href="/api/logout">
+            <Button variant="outlined" color="primary" href="/api/logout">
               Logout
             </Button>
           </div>
