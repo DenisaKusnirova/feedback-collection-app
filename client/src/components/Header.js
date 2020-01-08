@@ -4,12 +4,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Payments from "./Payments";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
-  menuButton: {},
   appBar: {
     backgroundColor: "white",
     display: "flex",
@@ -25,8 +25,15 @@ const useStyles = makeStyles(theme => ({
   link: {
     fontSize: 32,
     color: theme.palette.primary.main,
-    textDecoration: 'none',
+    textDecoration: "none"
   },
+  logoutMenu: {
+    display: "flex",
+    flexDirection: "row",
+    '& > button:first-child': {
+      marginRight: 16,
+    }
+  }
 }));
 
 function Header() {
@@ -46,9 +53,12 @@ function Header() {
         );
       default:
         return (
-          <Button variant="contained" color="primary" href="/api/logout">
-            Logout
-          </Button>
+          <div className={classes.logoutMenu}>
+            <Payments />
+            <Button variant="contained" color="primary" href="/api/logout">
+              Logout
+            </Button>
+          </div>
         );
     }
   };
@@ -56,7 +66,7 @@ function Header() {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Link to={user? "/surveys" : "/"} className={classes.link}>
+        <Link to={user ? "/surveys" : "/"} className={classes.link}>
           Emaily
         </Link>
         {renderContent()}
