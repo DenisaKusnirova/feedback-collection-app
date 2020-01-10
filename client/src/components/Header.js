@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,8 +31,14 @@ const useStyles = makeStyles(theme => ({
   logoutMenu: {
     display: "flex",
     flexDirection: "row",
-    '& > span:first-child': {
-      marginRight: 16,
+    '& > span': {
+      marginRight: 32,
+    },
+    '& > h6': {
+      marginRight: 32,
+      color: theme.palette.primary.main,
+      display: 'flex',
+      alignSelf: 'center',
     }
   }
 }));
@@ -55,6 +62,7 @@ function Header() {
         return (
           <div className={classes.logoutMenu}>
             <Payments />
+            <Typography variant="subtitle1">Credits: {user.credits}</Typography>
             <Button variant="outlined" color="primary" href="/api/logout">
               Logout
             </Button>
