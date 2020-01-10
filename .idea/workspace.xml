@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5335e099-0ee4-47fa-aa61-ddda7ea358d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="5335e099-0ee4-47fa-aa61-ddda7ea358d6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -27,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="210">
+              <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -57,7 +55,6 @@
         <option value="$PROJECT_DIR$/client/src/actions/types.js" />
         <option value="$PROJECT_DIR$/client/package.json" />
         <option value="$PROJECT_DIR$/client/src/setupProxy.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/client/src/reducers/authReducer.js" />
         <option value="$PROJECT_DIR$/routes/authRoutes.js" />
         <option value="$PROJECT_DIR$/client/src/components/Landing.js" />
@@ -76,6 +73,7 @@
         <option value="$PROJECT_DIR$/routes/billingRoutes.js" />
         <option value="$PROJECT_DIR$/client/src/components/Header.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -117,6 +115,7 @@
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="11.0.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -152,12 +151,12 @@
       <workItem from="1578350517114" duration="4140000" />
       <workItem from="1578406707287" duration="4228000" />
       <workItem from="1578475617330" duration="898000" />
-      <workItem from="1578488182774" duration="11175000" />
+      <workItem from="1578488182774" duration="11464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54113000" />
+    <option name="totallyTimeSpent" value="54402000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -411,8 +410,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        <state relative-caret-position="210">
+          <caret line="14" column="82" lean-forward="true" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
         </state>
       </provider>
     </entry>
