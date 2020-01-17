@@ -31,7 +31,11 @@ module.exports = app => {
 
       res.send(user);
     } catch (err) {
-        res.status(422).send(err);
+      res.status(422).send(err);
     }
+  });
+
+  app.get("/api/surveys/thanks", (req, res) => {
+    res.send("Thanks for voting!");
   });
 };
