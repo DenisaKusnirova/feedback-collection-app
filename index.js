@@ -1,15 +1,15 @@
 const express = require("express");
+const mongoose = require("mongoose");
+require("./models/User");
+require("./models/Survey");
+require("./services/passport");
 const authRoutes = require("./routes/authRoutes");
 const billingRoutes = require("./routes/billingRoutes");
 const surveyRoutes = require("./routes/surveyRoutes");
-const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-require("./models/User");
-require("./models/Survey");
-require("./services/passport");
 
 // Connect mongoose to mongodb
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });

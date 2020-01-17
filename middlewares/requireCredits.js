@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-  if (!req.credits) {
+  if (req.credits < 5) {
     return res.status(403).send({ error: "You must log in!" });
   }
   next();

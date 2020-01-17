@@ -7,6 +7,8 @@ import reducers from "./reducers/index";
 import styles from "./index.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import reduxThunk from "redux-thunk";
+import axios from 'axios';
+window.axios = axios;
 
 const theme = createMuiTheme({
   palette: {
