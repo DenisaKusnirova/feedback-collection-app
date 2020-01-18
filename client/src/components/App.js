@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./Header";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../actions";
+
+import Header from "./Header";
 import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -23,14 +26,13 @@ const App = () => {
     dispatch(fetchUser());
   }, []);
 
-  const Surveys = () => <h3>Surveys</h3>;
-
   return (
     <BrowserRouter>
       <Header />
       <div className={classes.container}>
         <Route path="/" component={Landing} exact />
-        <Route path="/surveys" component={Surveys} />
+        <Route path="/surveys" component={Dashboard} exact />
+        <Route path="/surveys/new" component={SurveyNew} exact />
       </div>
     </BrowserRouter>
   );
