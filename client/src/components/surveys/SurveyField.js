@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 
 const useStyles = () => makeStyles({});
 
-function SurveyField({ input, label, meta, helperText, error }) {
+function SurveyField({ input, label, meta }) {
   const classes = useStyles();
 
   return (
@@ -14,6 +14,7 @@ function SurveyField({ input, label, meta, helperText, error }) {
         label={label}
         helperText={meta.error && meta.touched && meta.error}
         error={meta.error && meta.touched}
+        autoComplete="none"
         {...input}
       />
     </div>

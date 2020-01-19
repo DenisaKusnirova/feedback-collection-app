@@ -1,24 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { reduxForm, Field } from "redux-form";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import DoneIcon from "@material-ui/icons/Done";
 import SurveyField from "./SurveyField";
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
 import validateEmails from "../../utils/validateEmails";
+import { FIELDS } from "./formFields";
 
-const FIELDS = [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject Line", name: "subject" },
-  { label: "Email Body", name: "body" },
-  { label: "Recipient List", name: "emails" }
-];
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     padding: 24,
     "& .MuiTextField-root": {
@@ -36,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SurveyForm({ handleSubmit }) {
+function SurveyForm({ handleSubmit, onSurveySubmit }) {
   const classes = useStyles();
 
   const renderFields = () =>
@@ -54,7 +47,7 @@ function SurveyForm({ handleSubmit }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(values => console.log(values))}>
+      <form onSubmit={handleSubmit(() => onSurveySubmit())}>
         <Card className={classes.card}>
           <CardContent>{renderFields()}</CardContent>
           <CardActions className={classes.cardActions}>
@@ -81,7 +74,7 @@ function SurveyForm({ handleSubmit }) {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || '');
+  errors.emails = validateEmails(values.emails || "");
 
   FIELDS.forEach(field => {
     if (!values[field.name]) {
@@ -95,5 +88,6 @@ function validate(values) {
 // reduxForm allows us to communicate with redux store
 export default reduxForm({
   validate: validate,
+  destroyOnUnmount: false,
   form: "surveyForm"
 })(SurveyForm);
