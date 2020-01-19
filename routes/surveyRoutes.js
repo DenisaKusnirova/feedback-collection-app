@@ -26,7 +26,7 @@ module.exports = app => {
     try {
       await mailer.send();
       await survey.save();
-      req.user.credit -= 1;
+      req.user.credits -= 5;
       const user = await req.user.save();
 
       res.send(user);

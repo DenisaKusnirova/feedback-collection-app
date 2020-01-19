@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,6 +8,9 @@ import EmailIcon from "@material-ui/icons/Email";
 import { useSelector } from "react-redux";
 import { FIELDS } from "./formFields";
 import TextField from "@material-ui/core/TextField";
+import { useDispatch } from "react-redux";
+import { submitSurvey } from "../../actions";
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -28,8 +30,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SurveyFormReview = ({ onCancel }) => {
+const SurveyFormReview = ({ onCancel, history }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const formValues = useSelector(state => state.form.surveyForm.values);
   console.log(formValues);
 
@@ -37,6 +40,7 @@ const SurveyFormReview = ({ onCancel }) => {
     FIELDS.map(field => {
       return (
         <TextField
+          key={field.label}
           label={field.label}
           readOnly
           value={formValues[field.name]}
@@ -62,6 +66,7 @@ const SurveyFormReview = ({ onCancel }) => {
             variant="contained"
             color="primary"
             endIcon={<EmailIcon />}
+            onClick={() => dispatch(submitSurvey(formValues, history))}
           >
             Send
           </Button>
@@ -71,4 +76,4 @@ const SurveyFormReview = ({ onCancel }) => {
   );
 };
 
-export default SurveyFormReview;
+export default withRouter(SurveyFormReview);

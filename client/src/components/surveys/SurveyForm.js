@@ -61,7 +61,7 @@ function SurveyForm({ handleSubmit, onSurveySubmit }) {
               variant="contained"
               color="primary"
               endIcon={<DoneIcon />}
-            >
+             >
               Next
             </Button>
           </CardActions>
@@ -74,7 +74,7 @@ function SurveyForm({ handleSubmit, onSurveySubmit }) {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || "");
+  errors.emails = validateEmails(values.recipients || "");
 
   FIELDS.forEach(field => {
     if (!values[field.name]) {
