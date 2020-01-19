@@ -9,12 +9,13 @@ import SurveyField from "./SurveyField";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
+import validateEmails from "../../utils/validateEmails";
 
 const FIELDS = [
   { label: "Survey Title", name: "title" },
   { label: "Subject Line", name: "subject" },
   { label: "Email Body", name: "body" },
-  { label: "Recipient List", name: "Emails" }
+  { label: "Recipient List", name: "emails" }
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -29,10 +30,10 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none"
   },
   cardActions: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  }
 }));
 
 function SurveyForm({ handleSubmit }) {
@@ -79,10 +80,12 @@ function SurveyForm({ handleSubmit }) {
 
 function validate(values) {
   const errors = {};
-  
+
+  errors.emails = validateEmails(values.emails || '');
+
   FIELDS.forEach(field => {
-    if(!values[field.name]) {
-      errors[field.name] = 'You must provide a value'
+    if (!values[field.name]) {
+      errors[field.name] = "You must provide a value";
     }
   });
 
