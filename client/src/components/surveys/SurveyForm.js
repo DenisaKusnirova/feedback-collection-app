@@ -10,6 +10,7 @@ import DoneIcon from "@material-ui/icons/Done";
 import SurveyField from "./SurveyField";
 import validateEmails from "../../utils/validateEmails";
 import { FIELDS } from "./formFields";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -17,6 +18,9 @@ const useStyles = makeStyles(() => ({
     "& .MuiTextField-root": {
       marginBottom: 16,
       width: "100%"
+    },
+    "& h5": {
+      marginBottom: 16
     }
   },
   buttonLink: {
@@ -49,7 +53,10 @@ function SurveyForm({ handleSubmit, onSurveySubmit }) {
     <div>
       <form onSubmit={handleSubmit(() => onSurveySubmit())}>
         <Card className={classes.card}>
-          <CardContent>{renderFields()}</CardContent>
+          <CardContent>
+            <Typography variant="h5">Create a new survey</Typography>
+            {renderFields()}
+          </CardContent>
           <CardActions className={classes.cardActions}>
             <Link to="/surveys" className={classes.buttonLink}>
               <Button type="submit" variant="outlined" color="primary">
@@ -61,7 +68,7 @@ function SurveyForm({ handleSubmit, onSurveySubmit }) {
               variant="contained"
               color="primary"
               endIcon={<DoneIcon />}
-             >
+            >
               Next
             </Button>
           </CardActions>

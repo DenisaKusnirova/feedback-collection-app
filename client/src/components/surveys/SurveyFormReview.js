@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import { useDispatch } from "react-redux";
 import { submitSurvey } from "../../actions";
 import { withRouter } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     "& .MuiTextField-root": {
       marginBottom: 16,
       width: "100%"
+    },
+    "& h5": {
+      marginBottom: 16
     }
   },
   buttonLink: {
@@ -51,7 +55,10 @@ const SurveyFormReview = ({ onCancel, history }) => {
   return (
     <div>
       <Card className={classes.card}>
-        <CardContent>{renderFormValues()}</CardContent>
+        <CardContent>
+          <Typography variant="h5">Confirm the entries</Typography>
+          {renderFormValues()}
+        </CardContent>
         <CardActions className={classes.cardActions}>
           <Button
             type="button"
