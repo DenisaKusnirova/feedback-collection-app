@@ -14,7 +14,9 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(() => ({
   card: {
-    padding: 24,
+    maxWidth: 660,
+    margin: "0 auto",
+    padding: 16,
     "& .MuiTextField-root": {
       marginBottom: 16,
       width: "100%"

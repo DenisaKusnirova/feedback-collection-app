@@ -13,7 +13,7 @@ import { submitSurvey } from "../../actions";
 import { withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     padding: 24,
     "& .MuiTextField-root": {

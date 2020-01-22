@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 16,
+    padding: '16px 24px',
     color: "black"
   },
   title: {
