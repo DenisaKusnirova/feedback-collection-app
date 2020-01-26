@@ -6,30 +6,46 @@ import Typography from "@material-ui/core/Typography";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import { Divider } from "@material-ui/core";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles(() => ({
   card: {
     maxWidth: 660,
     margin: "0 auto",
-    padding: 8,
+    padding: 8
   },
   date: {
     borderBottom: "1px solid gray"
   },
   marginBottom: {
     marginBottom: 12
+  },
+  surveyCardHeader: {
+    display: "flex",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }
 }));
 
-function SurveyCard({ title, body, sentOn, yesAnswers, noAnswers }) {
+function SurveyCard({ title, body, sentOn, yesAnswers, noAnswers, onIconDeleteClick }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
+        <div className={classes.surveyCardHeader}>
+          <Typography variant="h5" gutterBottom>
+            {title}
+          </Typography>
+          <IconButton
+            color="primary"
+            onClick={onIconDeleteClick}
+          >
+            <DeleteForeverIcon />
+          </IconButton>
+        </div>
         <Typography variant="body1" gutterBottom>
           {body}
         </Typography>

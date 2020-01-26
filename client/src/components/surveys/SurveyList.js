@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSurveys } from "../../actions";
+import { deleteSurvey, fetchSurveys } from "../../actions";
 
 import SurveyCard from "./SurveyCard";
 
@@ -20,19 +20,24 @@ function SurveyList() {
     dispatch(fetchSurveys());
   }, []);
 
-  const renderSurveys = surveys.reverse().map(survey => {
-    return (
-      <div key={survey._id} className={classes.survey}>
-        <SurveyCard
-          title={survey.title}
-          body={survey.body}
-          sentOn={survey.dateSent}
-          yesAnswers={survey.yes}
-          noAnswers={survey.no}
-        />
-      </div>
-    );
-  });
+  const renderSurveys =
+    surveys &&
+    surveys.reverse().map(survey => {
+      return (
+        <div key={survey._id} className={classes.survey}>
+          <SurveyCard
+            title={survey.title}
+            body={survey.body}
+            sentOn={survey.dateSent}
+            yesAnswers={survey.yes}
+            noAnswers={survey.no}
+            onIconDeleteClick={() =>
+              dispatch(deleteSurvey({ _id: survey._id }))
+            }
+          />
+        </div>
+      );
+    });
 
   return <div>{renderSurveys}</div>;
 }

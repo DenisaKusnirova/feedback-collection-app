@@ -16,6 +16,14 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.post("/api/survey/delete", requireLogin, async (req, res) => {
+    await Survey.deleteOne({ _id: req.body._id });
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    res.send(surveys);
+  });
+
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
