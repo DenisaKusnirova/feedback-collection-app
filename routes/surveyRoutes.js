@@ -44,7 +44,9 @@ module.exports = app => {
     try {
       await mailer.send();
       await survey.save();
-      req.user.credits -= 5;
+      if (req.user.credits > 0) {
+        req.users.credits -= 5;
+      }
       const user = await req.user.save();
 
       res.send(user);
